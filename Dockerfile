@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install tesseract-ocr -y \
+    && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install tesseract-ocr -y && apt install tesseract-ocr-heb -y && apt install tesseract-ocr-all -y && apt install imagemagick -y\
     python3 \
     #python-setuptools \
     python3-pip

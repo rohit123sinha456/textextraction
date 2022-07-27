@@ -35,9 +35,9 @@ def text_extract():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    img = cv2.imread(filename,0)
+    img = cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename),0)
     thresh2 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY, 199, 5)
-    pytesseract.pytesseract.tesseract_cmd = '/usr/share/tesseract-ocr/4.00/tessdata'
+    pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'#'/usr/share/tesseract-ocr/4.00/tessdata'
     text = pytesseract.image_to_string(thresh2)
     prediction = {'text':text}
 
